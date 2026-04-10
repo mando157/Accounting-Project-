@@ -1,0 +1,148 @@
+:root {
+    --bg-color: #f7f9fb;
+    --white: #ffffff;
+    --section-bg: #eeeeee85;
+    --primary-color: #565e74;
+    --border-color: #dddddd;
+    --input-border: #cccccc;
+    --debit-color: green;
+    --credit-color: red;
+    --shadow: rgba(0, 0, 0, 0.1);
+
+    --border-r: 5px;
+}
+
+/* Global */
+body {
+    margin: 0;
+    font-family: 'Inter', sans-serif;
+    background: var(--bg-color);
+}
+
+/* Topbar */
+.topbar {
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    background: var(--white);
+    font-family: 'Manrope', sans-serif;
+    font-weight: bold;
+    box-shadow: 0 2px 5px var(--shadow);
+    padding: 20px;
+
+    h1 {
+        margin: 0;
+        font-size: 22px;
+    }
+
+    h2 {
+        font-family: 'Manrope';
+        font-size: 18px;
+    }
+}
+
+/* Layout */
+.container-section {
+    display: flex;
+}
+
+/* Sidebar */
+.sidebar {
+    position: relative;
+    width: 220px;
+    background: var(--section-bg);
+    height: 100vh;
+    padding: 20px;
+}
+
+
+.sidebar ul {
+    list-style: none;
+    padding: 0;
+}
+
+.sidebar li {
+    position: relative;
+    padding: 10px;
+    cursor: pointer;
+    font-size: 14px;
+}
+
+.sidebar .active {
+    background: var(--white);
+    font-weight: bold;
+}
+
+.sidebar .active::after {
+    content: '';
+    display: block;
+    width: 3px;
+    height: 100%;
+    background: var(--primary-color);
+    position: absolute;
+    left: 0;
+    top: 0;
+}
+
+/* Main */
+.main {
+    flex: 1;
+    padding: 20px;
+}
+
+/* Form */
+.form {
+    display: grid;
+    grid-template-columns: repeat(2, 1fr);
+    gap: 10px;
+    background: var(--white);
+    padding: 20px;
+    border-radius: var(--border-r);
+}
+
+.form input,
+.form select {
+    padding: 10px;
+    border: 1px solid transparent;
+    background: var(--section-bg);
+    border-radius: var(--border-r);
+}
+
+.form button {
+    grid-column: span 2;
+    padding: 10px 20px;
+    background: var(--primary-color);
+    color: var(--white);
+    border: none;
+    cursor: pointer;
+    width: fit-content;
+    border-radius: var(--border-r);
+}
+
+/* Table */
+table {
+    width: 100%;
+    margin-top: 20px;
+    background: var(--white);
+    border-collapse: collapse;
+}
+
+table th,
+table td {
+    font-family: "Inter", sans-serif;
+    padding: 10px 5px;
+    border-bottom: 1px solid var(--border-color);
+    text-align: center;
+}
+
+table td:nth-child(4) {
+    background: var(--section-bg);
+}
+
+table td:nth-child(5) {
+    color: var(--debit-color);
+}
+
+table td:nth-child(6) {
+    color: var(--credit-color);
+}
