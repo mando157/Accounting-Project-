@@ -34,10 +34,10 @@
         <!-- Sidebar -->
         <aside class="sidebar">
             <ul>
-                <li class="active">Journal Entry</li>
-                <li>Trial Balance</li>
-                <li>Income Statement</li>
-                <li>Balance Sheet</li>
+                <li class="active"><a href="#">Journal Entry</a></li>
+                <li><a href="#">Trial Balance</a></li>
+                <li><a href="#">Income Statement</a></li>
+                <li><a href="#">Balance Sheet</a></li>
             </ul>
         </aside>
 
@@ -66,6 +66,14 @@
 
                 <button>Validate & Add</button>
             </form>
+            <!-- Table Title -->
+            <div class="title">
+                <h4>Entry Preview</h4>
+                <div class="content">
+                    <span>Total Debit: <strong id="totalDebit">0$</strong></span>
+                    <span>Total Credit: <strong id="totalCredit">0$</strong></span>
+                </div>
+            </div>
 
             <!-- Table -->
             <table>
@@ -81,7 +89,7 @@
                 </thead>
                 <tbody id="tableBody"></tbody>
             </table>
-
+            <h3 id="status"></h3>
         </main>
 
     </div>

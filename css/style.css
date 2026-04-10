@@ -53,6 +53,11 @@ body {
     background: var(--section-bg);
     height: 100vh;
     padding: 20px;
+
+    a {
+        text-decoration: none;
+        color: inherit;
+    }
 }
 
 
@@ -63,9 +68,16 @@ body {
 
 .sidebar li {
     position: relative;
+    margin: 10px ;
     padding: 10px;
     cursor: pointer;
     font-size: 14px;
+    transition: all 0.2s ease-in-out;
+}
+
+li:hover {
+    background: var(--white);
+    font-weight: bold;
 }
 
 .sidebar .active {
@@ -117,8 +129,26 @@ body {
     cursor: pointer;
     width: fit-content;
     border-radius: var(--border-r);
+    transition: all 0.2s ease-in-out;
 }
+.form button:hover {
+    box-shadow: 0 2px 5px var(--primary-color);
 
+}
+/* Table title */
+.title {
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    margin-top: 20px;
+    padding: 10px 0;
+}
+#totalDebit {
+    color: var(--debit-color);
+}
+#totalCredit {
+    color: var(--credit-color);
+}
 /* Table */
 table {
     width: 100%;
@@ -145,4 +175,26 @@ table td:nth-child(5) {
 
 table td:nth-child(6) {
     color: var(--credit-color);
+}
+
+.delete-btn {
+    background: transparent;
+    border: none;
+    cursor: pointer;
+    font-size: 16px;
+    transition: 0.3s;
+    opacity: 0.6;
+}
+
+.delete-btn:hover {
+    color: red;
+    transform: scale(1.2);
+    opacity: 1;
+}
+
+#status {
+    margin-top: 20px;
+    font-family: 'Manrope', sans-serif;
+    font-size: 18px;
+    text-align: end;
 }
