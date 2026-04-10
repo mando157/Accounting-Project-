@@ -23,76 +23,84 @@
 </head>
 
 <body>
-
-    <header class="topbar">
-        <h1> <i class="fa-solid fa-building-columns"></i> Fiscal Curator</h1>
-        <h2>Accounting 101</h2>
-    </header>
-
-    <div class="container-section">
-
-        <!-- Sidebar -->
-        <aside class="sidebar">
-            <ul>
-                <li class="active"><a href="#">Journal Entry</a></li>
-                <li><a href="#">Trial Balance</a></li>
-                <li><a href="#">Income Statement</a></li>
-                <li><a href="#">Balance Sheet</a></li>
-            </ul>
-        </aside>
-
-        <!-- Main -->
-        <main class="main">
-
-            <h2>Journal Entry</h2>
-
-            <!-- Form -->
-            <form id="entryForm" class="form">
-
-                <input type="date" id="date">
-                <input type="text" id="code" placeholder="Code">
-                <input type="text" id="name" placeholder="Account Name">
-
-                <select id="type">
-                    <option>Asset</option>
-                    <option>Liability</option>
-                    <option>Equity</option>
-                    <option>Revenue</option>
-                    <option>Expense</option>
-                </select>
-
-                <input type="number" id="debit" placeholder="Debit">
-                <input type="number" id="credit" placeholder="Credit">
-
-                <button>Validate & Add</button>
-            </form>
-            <!-- Table Title -->
-            <div class="title">
-                <h4>Entry Preview</h4>
-                <div class="content">
-                    <span>Total Debit: <strong id="totalDebit">0$</strong></span>
-                    <span>Total Credit: <strong id="totalCredit">0$</strong></span>
-                </div>
+    <section class="journal-entry">
+        
+            <header class="topbar">
+                <h1> <i class="fa-solid fa-building-columns"></i> Fiscal Curator</h1>
+                <h2>Accounting 101</h2>
+            </header>
+        
+            <div class="container-section">
+        
+                <!-- Sidebar -->
+                <aside class="sidebar">
+                    <ul>
+                        <li class="active"><a href="#">Journal Entry</a></li>
+                        <li><a href="#">Trial Balance</a></li>
+                        <li><a href="#">Income Statement</a></li>
+                        <li><a href="#">Balance Sheet</a></li>
+                    </ul>
+                </aside>
+        
+                <!-- Main -->
+                <main class="main">
+        
+                    <h2>Journal Entry</h2>
+        
+                    <!-- Form -->
+                    <form id="entryForm" class="form">
+        
+                        <input type="date" id="date">
+                        <input type="text" id="code" placeholder="Code">
+                        <input type="text" id="name" placeholder="Account Name">
+        
+                        <select id="type">
+                            <option>Asset</option>
+                            <option>Liability</option>
+                            <option>Equity</option>
+                            <option>Revenue</option>
+                            <option>Expense</option>
+                        </select>
+        
+                        <input type="number" id="debit" placeholder="Debit">
+                        <input type="number" id="credit" placeholder="Credit">
+        
+                        <button>Validate & Add</button>
+                    </form>
+                    <!-- Table Title -->
+                    <div class="title">
+                        <h4>Entry Preview</h4>
+                        <div class="content">
+                            <span>Total Debit: <strong id="totalDebit">0$</strong></span>
+                            <span>Total Credit: <strong id="totalCredit">0$</strong></span>
+                        </div>
+                    </div>
+        
+                    <!-- Table -->
+                    <table>
+                        <thead>
+                            <tr>
+                                <th>Date</th>
+                                <th>Code</th>
+                                <th>Name</th>
+                                <th>Type</th>
+                                <th>Debit</th>
+                                <th>Credit</th>
+                            </tr>
+                        </thead>
+                        <tbody id="tableBody"></tbody>
+                    </table>
+                    <h3 id="status"></h3>
+                </main>
+        
             </div>
 
-            <!-- Table -->
-            <table>
-                <thead>
-                    <tr>
-                        <th>Date</th>
-                        <th>Code</th>
-                        <th>Name</th>
-                        <th>Type</th>
-                        <th>Debit</th>
-                        <th>Credit</th>
-                    </tr>
-                </thead>
-                <tbody id="tableBody"></tbody>
-            </table>
-            <h3 id="status"></h3>
-        </main>
+    </section>
 
-    </div>
+    <section class="trial-balance"></section>
+    <section class="income-statement"></section>
+    <section class="balance-sheet"></section>
+
 
     <script src="./js/script.js"></script>
     <script src="./js/bootstrap.min.js"></script>

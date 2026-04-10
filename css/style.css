@@ -149,6 +149,9 @@ li:hover {
 #totalCredit {
     color: var(--credit-color);
 }
+.totalCredit {
+    color: var(--credit-color);
+}
 /* Table */
 table {
     width: 100%;
