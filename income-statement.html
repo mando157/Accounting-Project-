@@ -1,0 +1,329 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Fiscal Curator - Income Statement</title>
+    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700&family=Manrope&display=swap"
+        rel="stylesheet">
+    <link rel="stylesheet" href="./css/style.css">
+    <link rel="stylesheet" href="./css/all.min.css">
+    <link rel="stylesheet" href="./css/bootstrap.min.css">
+    <style>
+        :root {
+            --bg-color: #f8f9fa;
+            --main-bg: #ffffff;
+            --text-primary: #1f2937;
+            --text-secondary: #6b7280;
+            --accent-green: #059669;
+            --status-green-bg: #d1fae5;
+            --expense-red: #dc2626;
+            --dark-blue-footer: #30374e;
+            --border-color: #e5e7eb;
+        }
+
+        body {
+            background-color: var(--bg-color);
+            margin: 0;
+        }
+
+        .main {
+            flex: 1;
+            padding: 40px;
+            overflow-y: auto;
+        }
+
+        .report-header {
+            margin-bottom: 30px;
+        }
+
+        .report-title {
+            font-size: 2.2rem;
+            font-weight: 700;
+            margin-bottom: 5px;
+        }
+
+        .summary-cards {
+            display: grid;
+            grid-template-columns: repeat(2, 1fr);
+            gap: 20px;
+            margin-bottom: 30px;
+        }
+
+        .card-custom {
+            background-color: var(--main-bg);
+            padding: 25px;
+            border-radius: 12px;
+            border: 1px solid var(--border-color);
+        }
+
+        .card-label {
+            font-size: 0.8rem;
+            text-transform: uppercase;
+            color: var(--text-secondary);
+            margin-bottom: 10px;
+        }
+
+        .card-value {
+            font-size: 2.5rem;
+            font-weight: 700;
+            color: var(--accent-green);
+        }
+
+        .statement-box {
+            background-color: var(--main-bg);
+            border-radius: 12px;
+            border: 1px solid var(--border-color);
+            padding: 40px;
+        }
+
+        .section-header-title {
+            font-size: 1.1rem;
+            font-weight: 600;
+            margin-bottom: 20px;
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+        }
+
+        .section-header-title i {
+            font-size: 0.9rem;
+            color: var(--text-secondary);
+        }
+
+        .section-header-title:not(:first-child) {
+            margin-top: 40px;
+        }
+
+        .data-table-custom {
+            width: 100%;
+            border-collapse: collapse;
+            margin-bottom: 10px;
+        }
+
+        .data-table-custom td {
+            padding: 12px 0;
+            border-bottom: 1px solid var(--border-color);
+            text-align: left;
+        }
+
+        .item-name {
+            font-weight: 600;
+            display: block;
+            font-size: 0.95rem;
+        }
+
+        .item-sub {
+            font-size: 0.75rem;
+            color: var(--text-secondary);
+        }
+
+        td.item-val {
+            text-align: right;
+        }
+
+        .item-val {
+            text-align: right;
+            font-weight: 600;
+            font-size: 1rem;
+
+        }
+
+        .total-line {
+            display: flex;
+            justify-content: space-between;
+            padding: 15px 0;
+            font-weight: 700;
+            font-size: 1rem;
+            text-transform: uppercase;
+            letter-spacing: 0.025em;
+            color: var(--text-primary);
+        }
+
+        .profit-footer {
+            background-color: var(--dark-blue-footer);
+            color: #fff;
+            padding: 30px;
+            border-radius: 12px;
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            margin-top: 30px;
+        }
+
+        .footer-val {
+            font-size: 2.8rem;
+            font-weight: 700;
+        }
+
+        .disclaimer {
+            margin-top: 30px;
+            text-align: center;
+            font-size: 0.75rem;
+            color: var(--text-secondary);
+        }
+    </style>
+</head>
+
+<body>
+
+    <header class="topbar">
+        <h1><i class="fa-solid fa-building-columns"></i> Fiscal Curator</h1>
+        <h2>Accounting 101</h2>
+    </header>
+
+    <div class="container-section">
+        <aside class="sidebar">
+            <ul>
+                <li><a href="index.html">Journal Entry</a></li>
+                <li><a href="#">Trial Balance</a></li>
+                <li class="active"><a href="incomestatement.html">Income Statement</a></li>
+                <li><a href="#">Balance Sheet</a></li>
+            </ul>
+        </aside>
+
+        <main class="main">
+            <div class="report-header">
+                <h1 class="report-title">Income Statement</h1>
+                <p id="statementPeriod" style="color: var(--text-secondary);">For the Period Ended December 31, 2023</p>
+            </div>
+
+            <div class="summary-cards">
+                <div class="card-custom">
+                    <div class="card-label">Net Profit Margin</div>
+                    <div class="card-value" id="marginDisplay">24.8%</div>
+                    <div style="font-size: 0.85rem; color: var(--accent-green); margin-top: 5px;">
+                        <i class="fas fa-arrow-up"></i> +4.2% from previous quarter
+                    </div>
+                </div>
+                <div class="card-custom">
+                    <div
+                        style="background: var(--status-green-bg); color: var(--accent-green); padding: 4px 12px; border-radius: 20px; font-size: 0.75rem; font-weight: 700; display: inline-block; margin-bottom: 10px;">
+                        STATUS: AUDITED</div>
+                    <p style="font-size: 0.85rem; color: var(--text-secondary);">Generated automatically via real-time
+                        ledger integration for "Fiscal Curator" workspace.</p>
+                </div>
+            </div>
+
+            <div class="statement-box">
+
+                <div class="section-header-title">
+                    <span>Revenues</span>
+                    <i class="fas fa-arrow-up-right-from-square"></i>
+                </div>
+                <table class="data-table-custom">
+                    <tbody id="revenueTable"></tbody>
+                </table>
+                <div class="total-line">
+                    <span>Total Revenues</span>
+                    <span id="totalRevenue">$0.00</span>
+                </div>
+
+                <div class="section-header-title" style="border-top: 1px solid var(--border-color); padding-top: 20px;">
+                    <span>Cost of Goods Sold (COGS)</span>
+                </div>
+                <table class="data-table-custom">
+                    <tbody>
+                        <tr>
+                            <td><span class="item-name">Total COGS</span><span class="item-sub">Direct costs
+                                    attributable to production</span></td>
+                            <td class="item-val">$0.00</td>
+                        </tr>
+                    </tbody>
+                </table>
+                <div class="total-line">
+                    <span>Gross Profit</span>
+                    <span id="grossProfit">$0.00</span>
+                </div>
+
+                <div class="section-header-title" style="border-top: 1px solid var(--border-color); padding-top: 20px;">
+                    <span>Operating Expenses</span>
+                    <i class="fas fa-calculator"></i>
+                </div>
+                <table class="data-table-custom">
+                    <tbody id="expenseTable"></tbody>
+                </table>
+                <div class="total-line">
+                    <span>Total Expenses</span>
+                    <span id="totalExpense" style="color: var(--expense-red);">$0.00</span>
+                </div>
+
+                <div class="total-line"
+                    style="margin-top: 20px; background: #f9f9f9; padding: 15px; border-radius: 8px;">
+                    <span>Operating Income (EBIT)</span>
+                    <span id="operatingIncome">$0.00</span>
+                </div>
+
+                <div class="profit-footer">
+                    <div>
+                        <div style="font-size: 0.85rem; text-transform: uppercase; color: #a0a6ba;">Net Earnings After
+                            Operations</div>
+                        <div class="footer-label" style="font-size: 2rem;">Net Profit</div>
+                    </div>
+                    <div style="text-align: right;">
+                        <div class="footer-val" id="netIncomeValue">$0.00</div>
+                        <div style="font-size: 0.7rem; color: #81e6d9;">● FINALIZED CALCULATION</div>
+                    </div>
+                </div>
+            </div>
+
+            <div class="disclaimer">
+                This statement has been prepared in accordance with Generally Accepted Accounting Principles (GAAP).
+                <br>
+                ID: FR-2026-Q4-INC | System Timestamp: <span id="idDisplay"></span>
+            </div>
+        </main>
+    </div>
+
+    <script>
+        function renderStatement() {
+            const entries = JSON.parse(localStorage.getItem("entries")) || [];
+            const revenueTable = document.getElementById("revenueTable");
+            const expenseTable = document.getElementById("expenseTable");
+
+            let totalRev = 0;
+            let totalExp = 0;
+
+            revenueTable.innerHTML = "";
+            expenseTable.innerHTML = "";
+
+            entries.forEach(entry => {
+                if (entry.type === "Revenue") {
+                    totalRev += (entry.credit || 0);
+                    revenueTable.innerHTML += `
+                        <tr>
+                            <td><span class="item-name">${entry.name}</span><span class="item-sub">Core hardware and physical goods</span></td>
+                            <td class="item-val">$${(entry.credit || 0).toLocaleString(undefined, { minimumFractionDigits: 2 })}</td>
+                        </tr>`;
+                } else if (entry.type === "Expense") {
+                    totalExp += (entry.debit || 0);
+                    expenseTable.innerHTML += `
+                        <tr>
+                            <td><span class="item-name">${entry.name}</span><span class="item-sub">Operating and administrative expenses</span></td>
+                            <td class="item-val">$${(entry.debit || 0).toLocaleString(undefined, { minimumFractionDigits: 2 })}</td>
+                        </tr>`;
+                }
+            });
+
+            const grossProfit = totalRev;
+            const operatingIncome = grossProfit - totalExp;
+            const netIncome = operatingIncome;
+
+            document.getElementById("totalRevenue").innerText = "$" + totalRev.toLocaleString(undefined, { minimumFractionDigits: 2 });
+            document.getElementById("grossProfit").innerText = "$" + grossProfit.toLocaleString(undefined, { minimumFractionDigits: 2 });
+            document.getElementById("totalExpense").innerText = "$" + totalExp.toLocaleString(undefined, { minimumFractionDigits: 2 });
+            document.getElementById("operatingIncome").innerText = "$" + operatingIncome.toLocaleString(undefined, { minimumFractionDigits: 2 });
+            document.getElementById("netIncomeValue").innerText = "$" + netIncome.toLocaleString(undefined, { minimumFractionDigits: 2 });
+
+            if (totalRev > 0) {
+                document.getElementById('marginDisplay').innerText = ((netIncome / totalRev) * 100).toFixed(1) + "%";
+            }
+
+            document.getElementById('idDisplay').innerText = new Date().toLocaleString();
+        }
+        window.onload = renderStatement;
+    </script>
+</body>
+
+</html>
