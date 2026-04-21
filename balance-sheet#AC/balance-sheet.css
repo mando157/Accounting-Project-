@@ -1,0 +1,178 @@
+/*بسم الله الرحمن الرحيم*/
+/* 
+ Fiscal Curator - Balance Sheet Stylesheet
+  Bootstrap 5 */
+
+/* المتغيرات العامة  */
+:root {
+    --primary-font: 'Inter', sans-serif;
+    --bg-light: #f8f9fa;
+    --sidebar-bg: #f0f2f5;
+    --text-muted: #6c757d;
+    --dark-blue: #5d677a;
+    --dark-slate: #2c3338;
+    --success-green: #28a745;
+    --danger-red: #dc3545;
+    --border-color: #dee2e6;
+}
+
+ /*  (Body) */
+body {
+    font-family: var(--primary-font);
+    background-color: #ffffff;
+    color: #212529;
+}
+
+/*  تنسيقات الهيدر العلوي  */
+.top-header {
+    z-index: 1030; /*  علشان نضمن ان  الهيدر  يكون فوق العناصر الأخرى */
+    height: 60px;
+    background-color: #ffffff;
+    box-shadow: 0 1px 3px rgba(0,0,0,0.05);
+}
+
+.top-header #header-logo-icon {
+    font-size: 1.25rem;
+    color: #212529;
+}
+
+.top-header #header-brand-name {
+    letter-spacing: -0.01em;
+}
+
+/*  تنسيقات القائمة الجانبية (Sidebar) */
+.sidebar {
+    width: 280px;
+    background-color: var(--sidebar-bg);
+    border-right: 1px solid var(--border-color);
+}
+
+.sidebar .nav-link {
+    font-size: 0.95rem;
+    font-weight: 500;
+    transition: all 0.2s ease;
+    border-left: 4px solid transparent;
+}
+
+.sidebar .nav-link:hover {
+    background-color: #e9ecef;
+}
+
+.sidebar .nav-link.active {
+    background-color: #ffffff;
+    color: #212529 !important;
+    border-left-color: var(--dark-slate);
+}
+
+/*  تنسيقات المحتوى الرئيسي  */
+.main-content {
+    background-color: #ffffff;
+}
+
+.tracking-wider {
+    letter-spacing: 0.08em;
+}
+
+/*  (Summary Cards)  */
+.summary-card {
+    border-radius: 12px;
+    background: #ffffff;
+    transition: transform 0.2s ease;
+}
+
+.summary-card .icon-box {
+    width: 40px;
+    height: 40px;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+}
+
+/* علشان ننسق عرض المبالغ المالية */
+.amount-display .value {
+    letter-spacing: -0.02em;
+    font-size: 3.5rem;
+}
+
+.amount-display .currency,
+.amount-display .decimals {
+    font-size: 1.8rem;
+    position: relative;
+    top: -1.2rem;
+}
+
+
+.bg-success-subtle {
+    background-color: #e8f5e9;
+}
+
+/*  تنسيقات الجداول المالية  (Financial Tables)   */
+.table-container {
+    overflow: hidden;
+}
+
+.table-header {
+    border-bottom: 1px solid var(--border-color);
+}
+
+/* تنسيق صفوف البيانات الفردية */
+.table-row {
+    display: flex;
+    justify-content: space-between;
+    padding: 1rem 1.25rem;
+    border-bottom: 1px solid #f1f3f5;
+    background-color: #ffffff;
+}
+
+.table-row:last-child {
+    border-bottom: none;
+}
+
+.table-row .label {
+    font-weight: 400;
+    color: #495057;
+    font-size: 0.95rem;
+}
+
+.table-row .value {
+    font-weight: 600;
+    color: #212529;
+    font-size: 0.95rem;
+}
+
+.table-footer {
+    background-color: #ffffff;
+}
+
+/*  تنسيقات أشرطة الإجمالي النهائي   */
+.bg-dark-blue {
+    background-color: #5d677a;
+}
+
+.bg-dark-slate {
+    background-color: #2c3338;
+}
+
+.total-bar {
+    box-shadow: 0 4px 12px rgba(0, 0, 0, 0.1);
+    min-height: 80px;
+}
+
+
+@media (max-width: 768px) {
+    .sidebar {
+        display: none; 
+    }
+    
+    .amount-display .value {
+        font-size: 2.5rem;
+    }
+    
+    .main-content {
+        padding: 2rem 1rem !important;
+    }
+
+    .top-header {
+        padding: 0 1rem !important;
+    }
+}

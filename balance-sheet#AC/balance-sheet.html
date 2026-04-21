@@ -1,0 +1,198 @@
+<!DOCTYPE html>
+<html lang="ar" dir="ltr">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Fiscal Curator - Balance Sheet</title>
+    
+    <!-- روابط المكتبات الخارجية: Bootstrap و Font Awesome و Google Fonts -->
+    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0/dist/css/bootstrap.min.css" rel="stylesheet">
+    <link href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css" rel="stylesheet">
+    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700&display=swap" rel="stylesheet">
+    
+    <!-- م (Custom Styles) -->
+    <link rel="stylesheet" href="balance-sheet.css">
+</head>
+<body>
+    <!--  (Top Header) -->
+    <header class="top-header border-bottom bg-white sticky-top py-2 px-4 d-flex justify-content-between align-items-center">
+        <div class="header-left d-flex align-items-center">
+            <i class="fas fa-building-columns me-2" id="header-logo-icon"></i>
+            <span class="fw-bold fs-5" id="header-brand-name">Fiscal Curator</span>
+        </div>
+        <div class="header-right">
+            <span class="fw-semibold text-dark" id="header-course-name">Accounting 101</span>
+        </div>
+    </header>
+
+    <div class="container-fluid p-0 d-flex min-vh-100">
+        <!-- دا المفروض للتنقل بين أجزاء النظام المحاسبي للقائمة الجانبية (Sidebar Navigation)  -->
+        <aside class="sidebar bg-light d-none d-md-block">
+            <div class="sidebar-header p-4">
+                
+            </div>
+            <nav class="sidebar-nav">
+                <a href="#" class="nav-link px-4 py-2 text-muted">
+                    <i class="fas fa-file-invoice me-3"></i>Journal Entry
+                </a>
+                <a href="#" class="nav-link px-4 py-2 text-muted">
+                    <i class="fas fa-list-check me-3"></i>Trial Balance
+                </a>
+                <a href="#" class="nav-link px-4 py-2 text-muted">
+                    <i class="fas fa-file-lines me-3"></i>Income Statement
+                </a>
+                <a href="#" class="nav-link px-4 py-2 active">
+                    <i class="fas fa-briefcase me-3"></i>Balance Sheet
+                </a>
+            </nav>
+        </aside>
+
+        <!--  يعرض الميزانية العمومية والبيانات المالية -->
+        <main class="main-content flex-grow-1 p-4 p-md-5">
+            
+            <!--  المفروض نربطهم ببعض علشان التنقل الفرعي (journal Trial Income Balance Sheet)  -->
+
+            <!-- مش عارفة الصراحة كدا فاهمة صح ولا لم افهم جيدا؟ انا اعتبرت ان التاريخ افتراضي ف دا كدا  عنوان الصفحة وتاريخ الميزانية -->
+            <section class="content-header mb-5">
+                <span class="text-uppercase text-muted small fw-bold tracking-wider">FINANCIAL POSITION</span>
+                <h1 class="display-5 fw-bold mt-1 mb-3">Balance Sheet</h1>
+                <p class="text-muted">A curated snapshot of your business's financial health, captured on <span id="as-of-date">December 31, 2023</span>.</p>
+            </section>
+
+            <!--  عرض لإجمالي الأصول والخصوم وحقوق الملكية -->
+            <div class="row g-4 mb-5">
+                <!--  إجمالي الأصول -->
+                <div class="col-md-6">
+                    <div class="card summary-card h-100 border-0 shadow-sm p-4">
+                        <div class="d-flex justify-content-between align-items-start mb-3">
+                            <div class="icon-box bg-light p-2 rounded">
+                                <i class="fas fa-building-columns text-muted"></i>
+                            </div>
+                            <span class="text-uppercase text-muted small fw-bold">TOTAL ASSETS</span>
+                        </div>
+                        <div class="amount-display">
+                            <span class="currency h2 fw-bold">$</span>
+                            <span class="value display-4 fw-bold" id="total-assets-value">0</span>
+                            <span class="decimals h2 fw-bold">.00</span>
+                        </div>
+                        <div class="trend mt-2 text-success small">
+                            <i class="fas fa-chart-line me-1"></i>
+                            <span id="asset-trend-text">+0%</span>
+                        </div>
+                    </div>
+                </div>
+                <!-- وحقوق الملكية  LIABILITIES ا اجمالي -->
+                <div class="col-md-6">
+                    <div class="card summary-card h-100 border-0 shadow-sm p-4">
+                        <div class="d-flex justify-content-between align-items-start mb-3">
+                            <div class="icon-box bg-light p-2 rounded">
+                                <i class="fas fa-compass text-danger"></i>
+                            </div>
+                            <span class="text-uppercase text-muted small fw-bold">LIABILITIES + EQUITY</span>
+                        </div>
+                        <div class="amount-display">
+                            <span class="currency h2 fw-bold">$</span>
+                            <span class="value display-4 fw-bold" id="total-liabilities-equity-value">0</span>
+                            <span class="decimals h2 fw-bold">.00</span>
+                        </div>
+                        <div class="status mt-2">
+                            <span class="badge bg-success-subtle text-success px-2 py-1">
+                                <i class="fas fa-circle small me-1"></i> IN BALANCE
+                            </span>
+                        </div>
+                    </div>
+                </div>
+            </div>
+
+            <!--  (Financial Detail Tables)-->
+            <div class="row g-5">
+                <!--العمود الأيسل (Assets) -->
+                <div class="col-lg-6">
+                    <h3 class="h4 fw-bold mb-4">Assets</h3>
+                    
+                    <!-- قسم الأصول المتداولة -->
+                    <div class="table-container mb-4">
+                        <div class="table-header d-flex justify-content-between p-3 bg-light rounded-top">
+                            <span class="text-uppercase small fw-bold text-muted">CURRENT ASSETS</span>
+                            <span class="text-uppercase small fw-bold text-muted">AMOUNT</span>
+                        </div>
+                        <div id="current-assets-list" class="table-body border-start border-end">
+                            <!--   عبشان البيانات تكون  تلقائيا JavaScript -->
+                        </div>
+                        <div class="table-footer d-flex justify-content-between p-3 border rounded-bottom bg-white">
+                            <span class="fw-bold small text-muted">Total Current Assets</span>
+                            <span class="fw-bold" id="total-current-assets">$0.00</span>
+                        </div>
+                    </div>
+
+                    <!-- قسم الأصول الثابتة -->
+                    <div class="table-container mb-4">
+                        <div class="table-header d-flex justify-content-between p-3 bg-light rounded-top">
+                            <span class="text-uppercase small fw-bold text-muted">FIXED ASSETS</span>
+                            <span class="text-uppercase small fw-bold text-muted">AMOUNT</span>
+                        </div>
+                        <div id="fixed-assets-list" class="table-body border-start border-end">
+                            <!--   عبشان البيانات تكون  تلقائيا JavaScript -->
+                        </div>
+                        <div class="table-footer d-flex justify-content-between p-3 border rounded-bottom bg-white">
+                            <span class="fw-bold small text-muted">Total Fixed Assets</span>
+                            <span class="fw-bold" id="total-fixed-assets">$0.00</span>
+                        </div>
+                    </div>
+
+                    <!--  إجمالي الأصول النهائي -->
+                    <div class="total-bar bg-dark-blue text-white p-4 rounded d-flex justify-content-between align-items-center mt-5">
+                        <span class="text-uppercase fw-bold">TOTAL ASSETS</span>
+                        <span class="h4 mb-0 fw-bold" id="grand-total-assets">$0.00</span>
+                    </div>
+                </div>
+
+                <!-- (Liabilities & Equity) -->
+                <div class="col-lg-6">
+                    <h3 class="h4 fw-bold mb-4">Liabilities & Equity</h3>
+
+                    <!-- Liabilities قسمم -->
+                    <div class="table-container mb-4">
+                        <div class="table-header d-flex justify-content-between p-3 bg-light rounded-top">
+                            <span class="text-uppercase small fw-bold text-muted">LIABILITIES</span>
+                            <span class="text-uppercase small fw-bold text-muted">AMOUNT</span>
+                        </div>
+                        <div id="liabilities-list" class="table-body border-start border-end">
+                            <!--   عبشان البيانات تكون  تلقائيا JavaScript -->
+                        </div>
+                        <div class="table-footer d-flex justify-content-between p-3 border rounded-bottom bg-white">
+                            <span class="fw-bold small text-muted">Total Liabilities</span>
+                            <span class="fw-bold" id="total-liabilities">$0.00</span>
+                        </div>
+                    </div>
+
+                    <!-- قسم حقوق الملكية -->
+                    <div class="table-container mb-4">
+                        <div class="table-header d-flex justify-content-between p-3 bg-light rounded-top">
+                            <span class="text-uppercase small fw-bold text-muted">EQUITY</span>
+                            <span class="text-uppercase small fw-bold text-muted">AMOUNT</span>
+                        </div>
+                        <div id="equity-list" class="table-body border-start border-end">
+                           <!--   عبشان البيانات تكون  تلقائيا JavaScript -->
+                        </div>
+                        <div class="table-footer d-flex justify-content-between p-3 border rounded-bottom bg-white">
+                            <span class="fw-bold small text-muted">Total Equity</span>
+                            <span class="fw-bold" id="total-equity">$0.00</span>
+                        </div>
+                    </div>
+
+                    <!--  إجمالي الديون وحقوق الملكية النهائي -->
+                    <div class="total-bar bg-dark-slate text-white p-4 rounded d-flex justify-content-between align-items-center mt-5">
+                        <span class="text-uppercase fw-bold">TOTAL LIABILITIES & EQUITY</span>
+                        <span class="h4 mb-0 fw-bold" id="grand-total-liabilities-equity">$0.00</span>
+                    </div>
+                </div>
+            </div>
+        </main>
+    </div>
+
+    <!-- JavaScriptو Bootstrap ملفات -->
+    <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0/dist/js/bootstrap.bundle.min.js"></script>
+    <script src="balance-sheet.js"></script>
+</body>
+</html>
